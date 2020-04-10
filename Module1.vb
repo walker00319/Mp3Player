@@ -14,20 +14,20 @@ Module Module1
         Return (0)
     End Function
     Function Getinfo()
-        If Form1.Player1.URL <> Nothing Then
+        If Form1.player2.URL <> Nothing Then
 
 
-            Form1.LblINFO.Text = Form1.Player1.currentMedia.name.ToString() + "" + TimeSpan.FromSeconds(Form1.Player1.Ctlcontrols.currentPosition).ToString("hh\:mm\:ss") + "/" + TimeSpan.FromSeconds(Form1.Player1.currentMedia.duration).ToString("hh\:mm\:ss")
-            Form1.ProgPlayed.Maximum = Int(Form1.Player1.currentMedia.duration)
-            Console.WriteLine(Int(Form1.Player1.currentMedia.duration).ToString)
-            Form1.ProgPlayed.Value = Int(Form1.Player1.Ctlcontrols.currentPosition)
-            Console.WriteLine(Int(Form1.Player1.Ctlcontrols.currentPosition).ToString)
+            Form1.LblINFO.Text = Form1.player2.currentMedia.name.ToString() + "" + TimeSpan.FromSeconds(Form1.player2.Ctlcontrols.currentPosition).ToString("hh\:mm\:ss") + "/" + TimeSpan.FromSeconds(Form1.player2.currentMedia.duration).ToString("hh\:mm\:ss")
+            Form1.ProgPlayed.Maximum = Int(Form1.player2.currentMedia.duration) + 1
+            Console.WriteLine(Int(Form1.player2.currentMedia.duration).ToString)
+            Form1.ProgPlayed.Value = Int(Form1.player2.Ctlcontrols.currentPosition)
+            Console.WriteLine(Int(Form1.player2.Ctlcontrols.currentPosition).ToString)
         Else
             Form1.LblINFO.Text = "No Song Playing"
             Form1.ProgPlayed.Value = 0
         End If
 
-        Form1.Text = "Media Player " + My.Application.Info.Version.ToString() + vbNewLine + Form1.Player1.status.ToString
+        Form1.Text = "Media Player " + My.Application.Info.Version.ToString() + vbNewLine + Form1.player2.status.ToString
         Return (0)
 
 
@@ -68,10 +68,10 @@ Module Module1
         Return (nextsong)
     End Function
     Function IsDonePlaying()
-        Dim playerurl = Form1.Player1.URL
-        If Form1.Player1.URL <> "" Then
+        Dim playerurl = Form1.player2.URL
+        If Form1.player2.URL <> "" Then
 
-            If Form1.Player1.Ctlcontrols.currentPosition = Form1.Player1.currentMedia.duration Then
+            If Form1.player2.Ctlcontrols.currentPosition = Form1.player2.currentMedia.duration Then
 
                 Return (True)
             Else

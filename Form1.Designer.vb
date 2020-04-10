@@ -46,7 +46,6 @@ Partial Class Form1
         Me.URLToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VolumeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Player1 = New AxWMPLib.AxWindowsMediaPlayer()
         Me.PlSav = New System.Windows.Forms.SaveFileDialog()
         Me.PlLoad = New System.Windows.Forms.OpenFileDialog()
         Me.PlylistSong = New System.Windows.Forms.ListBox()
@@ -61,9 +60,10 @@ Partial Class Form1
         Me.Chkshuffle = New System.Windows.Forms.CheckBox()
         Me.Notify1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.LblStatus = New System.Windows.Forms.Label()
+        Me.player2 = New AxWMPLib.AxWindowsMediaPlayer()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.Player1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.player2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ProgPlayed
@@ -211,18 +211,6 @@ Partial Class Form1
         Me.VolumeToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.VolumeToolStripMenuItem.Text = "Volume"
         '
-        'Player1
-        '
-        Me.Player1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Player1.Enabled = True
-        Me.Player1.Location = New System.Drawing.Point(12, 31)
-        Me.Player1.Name = "Player1"
-        Me.Player1.OcxState = CType(resources.GetObject("Player1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.Player1.Size = New System.Drawing.Size(649, 350)
-        Me.Player1.TabIndex = 9
-        '
         'PlSav
         '
         Me.PlSav.Title = "Open Play List"
@@ -337,11 +325,21 @@ Partial Class Form1
         Me.LblStatus.TabIndex = 15
         Me.LblStatus.Text = "Label1"
         '
+        'player2
+        '
+        Me.player2.Enabled = True
+        Me.player2.Location = New System.Drawing.Point(13, 28)
+        Me.player2.Name = "player2"
+        Me.player2.OcxState = CType(resources.GetObject("player2.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.player2.Size = New System.Drawing.Size(638, 353)
+        Me.player2.TabIndex = 16
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1128, 450)
+        Me.Controls.Add(Me.player2)
         Me.Controls.Add(Me.LblStatus)
         Me.Controls.Add(Me.Chkshuffle)
         Me.Controls.Add(Me.ChkRepeat)
@@ -351,7 +349,6 @@ Partial Class Form1
         Me.Controls.Add(Me.BtnStop)
         Me.Controls.Add(Me.bTNPLAY)
         Me.Controls.Add(Me.LblINFO)
-        Me.Controls.Add(Me.Player1)
         Me.Controls.Add(Me.PlylistSong)
         Me.Controls.Add(Me.PlylistList)
         Me.Controls.Add(Me.ProgPlayed)
@@ -366,7 +363,7 @@ Partial Class Form1
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.Player1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.player2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -389,7 +386,7 @@ Partial Class Form1
     Friend WithEvents UrlToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VolumeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Player1 As AxWMPLib.AxWindowsMediaPlayer
+
     Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SongToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FolderToolStripMenuItem1 As ToolStripMenuItem
@@ -409,4 +406,5 @@ Partial Class Form1
     Friend WithEvents ChkRepeat As CheckBox
     Friend WithEvents Notify1 As NotifyIcon
     Friend WithEvents LblStatus As Label
+    Friend WithEvents player2 As AxWMPLib.AxWindowsMediaPlayer
 End Class

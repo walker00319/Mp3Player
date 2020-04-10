@@ -24,8 +24,8 @@ Public Class Form1
         Dim result = FileDiag.ShowDialog
         If result = DialogResult.OK Then
             Dim filename = FileDiag.FileName
-            Player1.URL = (filename)
-            Player1.Ctlcontrols.play()
+            player2.URL = (filename)
+            player2.Ctlcontrols.play()
 
 
         End If
@@ -44,15 +44,15 @@ Public Class Form1
         If openurl.ShowDialog = DialogResult.OK Then
 
         End If
-        Player1.URL = openurl.TxtURl.Text
+        player2.URL = openurl.TxtURl.Text
 
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        Player1.BeginInit()
+        player2.BeginInit()
         Notify1.Visible = True
-        Me.Text = "Media Player " + My.Application.Info.Version.ToString() + vbNewLine + Player1.status.ToString
+        Me.Text = "Media Player " + My.Application.Info.Version.ToString() + vbNewLine + player2.status.ToString
 
     End Sub
 
@@ -80,14 +80,14 @@ Public Class Form1
     Private Sub PlylistList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PlylistList.SelectedIndexChanged
         PlylistList.SelectedItem() = PlylistList.SelectedIndex()
         Console.WriteLine("New Selected Song path is:" + PlylistList.SelectedItem().ToString)
-        Player1.URL = (PlylistList.SelectedItem().ToString)
+        player2.URL = (PlylistList.SelectedItem().ToString)
         playerurl = PlylistList.SelectedItem().ToString
-        Player1.Ctlcontrols.play()
-        Console.WriteLine("Now playing: " + Player1.currentMedia.name.ToString)
-        synth.SpeakAsync("Now playing: " + Player1.currentMedia.name.ToString)
+        player2.Ctlcontrols.play()
+        Console.WriteLine("Now playing: " + player2.currentMedia.name.ToString)
+        synth.SpeakAsync("Now playing: " + player2.currentMedia.name.ToString)
         Notify1.Visible = True
 
-        Notify1.ShowBalloonTip(15000, "Media Player " + My.Application.Info.Version.ToString(), "Now playing: " + Player1.currentMedia.name.ToString, ToolTipIcon.Info)
+        Notify1.ShowBalloonTip(1500, "Media Player " + My.Application.Info.Version.ToString(), "Now playing: " + player2.currentMedia.name.ToString, ToolTipIcon.Info)
     End Sub
 
 
@@ -155,7 +155,7 @@ Public Class Form1
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If Player1.URL <> "" Then
+        If player2.URL <> "" Then
 
         End If
         Getinfo()
@@ -171,15 +171,15 @@ Public Class Form1
     End Sub
 
     Private Sub bTNPLAY_Click(sender As Object, e As EventArgs) Handles bTNPLAY.Click
-        Player1.Ctlcontrols.play()
+        player2.Ctlcontrols.play()
     End Sub
 
     Private Sub BtnPause_Click(sender As Object, e As EventArgs) Handles BtnPause.Click
-        Player1.Ctlcontrols.pause()
+        player2.Ctlcontrols.pause()
     End Sub
 
     Private Sub BtnStop_Click(sender As Object, e As EventArgs) Handles BtnStop.Click
-        Player1.Ctlcontrols.stop()
+        player2.Ctlcontrols.stop()
     End Sub
 
     Private Sub BtnPrev_Click(sender As Object, e As EventArgs) Handles BtnPrev.Click
@@ -204,8 +204,8 @@ Public Class Form1
     End Sub
 
 
-    Private Sub Player1_StatusChange(sender As Object, e As EventArgs) Handles Player1.StatusChange
-        LblStatus.Text = Player1.status.ToString
-        'Console.WriteLine(Player1.status.ToString())
+    Private Sub Player2_StatusChange(sender As Object, e As EventArgs) Handles player2.StatusChange
+        LblStatus.Text = player2.status.ToString
+        'Console.WriteLine(Player2.status.ToString())
     End Sub
 End Class
